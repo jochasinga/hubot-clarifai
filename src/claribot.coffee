@@ -2,8 +2,8 @@
 #   A hubot script that learns from images and videos
 #
 # Configuration:
-#   CLARIFAI_CLIENT_ID
-#   CLARIFAI_CLIENT_SECRET
+#   HUBOT_CLARIFAI_CLIENT_ID
+#   HUBOT_CLARIFAI_CLIENT_SECRET
 #
 # Commands:
 #   hubot <image or video url>
@@ -14,22 +14,29 @@
 # Author:
 #   Panisuan Chasinga <jo.chasinga@gmail.com>
 
+clientId = process.env.HUBOT_CLARIFAI_CLIENT_ID
+clientSecret = process.env.HUBOT_CLARIFAI_CLIENT_SECRET
+
 module.exports = (robot) ->
 
-	#clientId = "sB0wKtZj7KJZvI7_qffQUw6-am9aCFxhw7j3SkUs"
-	#clientSecret = "_LXTYygWqRoC9ncEjWUDb2X6HcCZAqzDIyLhOL7k"
-	clientId = CLARIFAI_CLIENT_ID
-	clientSecret = CLARIFAI_CLIENT_SECRET
-	grantType = "client_credentials"
-	tokenUrl = "https://api.clarifai.com/v1/token/"
-	tagUrl = "https://api.clarifai.com/v1/tag/"
-	token = {}
+  grantType = "client_credentials"
+  tokenUrl = "https://api.clarifai.com/v1/token/"
+  tagUrl = "https://api.clarifai.com/v1/tag/"
+  token = {}
+  grant = "grant_type=#{ grantType }&client_id=#{ clientId }&client_secret=#{ clientSecret }"
 
-	data = "grant_type=#{ grantType }&client_id=#{ clientId }&client_secret=#{ clientSecret }"
+  responses = [
+    "Are you thinking of a #{ tag }?"
+    , "Feeling like a #{ tag }?"
+    , "I love #{ tag } too. You know, on my better days."
+    , "Perhaps you could tell me more about #{ tag } over a coffee."
+    , "Ever heard of a robot #{ tag }?"
+    , "Go get your #{ tag } now! You're annoying me."
+  ]
 
   getToken = ->
     new Promise((resolve, reject) ->
-      robot.http(tokenUrl).post data, (err, res, body) ->
+      robot.http(tokenUrl).post grant, (err, res, body) ->
         if !err and res.statusCode == 200
           resolve res
         else
@@ -69,7 +76,8 @@ module.exports = (robot) ->
       # TODO: make hubot reply with the tags in a more meaningful way
       # since tags are returned with many concepts
       tag = tags[Math.floor(Math.random() * items.length)]
-      msg.send "Are you thinking of a #{ tag }?"
+      #msg.send "Are you thinking of a #{ tag }?"
+      msg.send responses[Math.floor(Math.random() * items.length)]
       return
     ), (error) ->
       # handle error the hubot way?
