@@ -27,11 +27,11 @@ module.exports = (robot) ->
 
   responses = [
     "Are you thinking of a #{ tag }?"
-    , "Feeling like a #{ tag }?"
-    , "I love #{ tag } too. You know, on my better days."
-    , "Perhaps you could tell me more about #{ tag } over a coffee."
-    , "Ever heard of a robot #{ tag }?"
-    , "Go get your #{ tag } now! You're annoying me."
+    "Feeling like a #{ tag }?"
+    "I love #{ tag } too. You know, on my better days."
+    "Perhaps you could tell me more about #{ tag } over a coffee."
+    "Ever heard of a robot #{ tag }?"
+    "Go get your #{ tag } now! You're annoying me."
   ]
 
   getToken = ->
