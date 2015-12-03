@@ -8,19 +8,21 @@ See [`src/claribot.coffee`](src/claribot.coffee) for full documentation.
 
 In hubot project repo, run:
 
-`npm install hubot-claribot --save`
+`npm install hubot-clarifai --save`
 
-Then add **hubot-claribot** to your `external-scripts.json`:
+Then add **hubot-clarifai** to your `external-scripts.json`:
 
 ```json
 [
-  "hubot-claribot"
+  "hubot-clarifai"
 ]
 ```
 
 ## Sample Interaction
 
 ```
-user1>> hubot hello
-hubot>> hello!
+user1>> hubot http://example.com/cute-cat.jpg
+hubot>> Are you thinking about a pet?
+user2>> hubot https://domain.xyz/kate-moss.gif
+hubot>> Feeling like a model?
 ```
