@@ -1,7 +1,7 @@
 {
-  "name": "hubot-claribot",
-  "description": "A hubot script that learns from images and videos",
-  "version": "0.0.0",
+  "name": "hubot-clarifai",
+  "description": "A hubot script that learns from images and videos you post",
+  "version": "0.1.0",
   "author": "Panisuan Chasinga <jo.chasinga@gmail.com>",
   "license": "MIT",
 
@@ -9,11 +9,11 @@
 
   "repository": {
     "type": "git",
-    "url": "git://github.com/hubot-scripts/hubot-claribot.git"
+    "url": "git://github.com/hubot-scripts/hubot-clarifai.git"
   },
 
   "bugs": {
-    "url": "https://github.com/hubot-scripts/hubot-claribot/issues"
+    "url": "https://github.com/hubot-scripts/hubot-clarifai/issues"
   },
 
   "dependencies": {
